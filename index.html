@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Generation Bankruptcy Intelligence</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <!-- Chart.js for the trends visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body {
+            background-color: #030712;
+        }
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+        }
+        .slide-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 py-8 space-y-20">
+                <!-- Overview Slide -->
+                <div id="overview-content" class="slide">
+                    <!-- Content from overview-slide.tsx -->
+                </div>
+
+                <!-- Market Data Landscape -->
+                <div id="data-landscape-content" class="slide">
+                    <!-- Content from bankruptcy-data-landscape -->
+                </div>
+
+                <!-- Market Data Value -->
+                <div id="data-value-content" class="slide">
+                    <!-- Content from bankruptcy-data-value -->
+                </div>
+
+                <!-- Market Opportunity -->
+                <div id="market-content" class="slide">
+                    <!-- Content from market-slide.tsx -->
+                </div>
+
+                <!-- Time Analysis -->
+                <div id="time-analysis-content" class="slide">
+                    <!-- Content from time-analysis-slide.tsx -->
+                </div>
+
+                <!-- Traction -->
+                <div id="traction-content" class="slide">
+                    <!-- Content from traction-slide.tsx -->
+                </div>
+
+                <!-- Phase 2 -->
+                <div id="phase2-content" class="slide">
+                    <!-- Content from phase2-slide.tsx -->
+                </div>
+
+                <!-- Phase 3 -->
+                <div id="phase3-content" class="slide">
+                    <!-- Content from phase3-slide.tsx -->
+                </div>
+
+                <!-- Value and Trends -->
+                <div id="value-trends-content" class="slide">
+                    <!-- Content from value-and-trends.tsx -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling between slides
+        document.querySelectorAll('.slide').forEach(slide => {
+            slide.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY;
+                const currentSlide = e.currentTarget;
+                if (delta > 0) {
+                    // Scroll down to next slide
+                    const nextSlide = currentSlide.nextElementSibling;
+                    if (nextSlide) {
+                        nextSlide.scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else {
+                    // Scroll up to previous slide
+                    const prevSlide = currentSlide.previousElementSibling;
+                    if (prevSlide) {
+                        prevSlide.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
