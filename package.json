@@ -1,0 +1,13 @@
+{
+  "name": "bankruptcy-intelligence-slides",
+  "version": "1.0.0",
+  "description": "Next-Generation Bankruptcy Intelligence Presentation",
+  "scripts": {
+    "build": "pug src/index.pug -o dist/",
+    "dev": "pug -w src/index.pug -o dist/"
+  },
+  "dependencies": {
+    "pug": "^3.0.2",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}
