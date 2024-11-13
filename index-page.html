@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RKC - AI-Powered Restructuring Intelligence</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #ffffff;
+    }
+    .highlight {
+      color: #385854;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .gradient-text {
+      color: #385854;
+    }
+    @media (max-width: 767px) {
+      .card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 py-8 space-y-20">
+      <!-- Overview -->
+      <div id="overview-content"></div>
+
+      <!-- Market -->
+      <div id="market-content"></div>
+
+      <!-- Traction -->
+      <div id="traction-content"></div>
+
+      <!-- Impact -->
+      <div id="time-analysis-content"></div>
+
+      <!-- Phase 1 -->
+      <div id="phase1-content"></div>
+
+      <!-- Phase 2 -->
+      <div id="phase2-content"></div>
+
+      <!-- Phase 3 -->
+      <div id="phase3-content"></div>
+
+      <!-- Conclusion -->
+      <div id="conclusion-content"></div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Content mapping
+    const contentMap = {
+      'overview-content': 'overview-slide.html',
+      'market-content': 'market-slide.html',
+      'traction-content': 'traction-slide.html',
+      'time-analysis-content': 'time-analysis-slide.html',
+      'phase1-content': 'phase1-slide.html',
+      'phase2-content': 'phase2-slide.html',
+      'phase3-content': 'phase3-slide.html',
+      'conclusion-content': 'conclusion-slide.html'
+    };
+
+    async function fetchHTML(fileName) {
+      try {
+        const response = await fetch(`/slides/${fileName}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.text();
+      } catch (error) {
+        console.error(`Error fetching ${fileName}: `, error);
+        return null;
+      }
+    }
+
+    async function displayContent() {
+      for (const [contentId, fileName] of Object.entries(contentMap)) {
+        const contentElement = document.getElementById(contentId);
+        const fileContent = await fetchHTML(fileName);
+        if (fileContent !== null && contentElement) {
+          contentElement.innerHTML = fileContent;
+        }
+      }
+      // Reinitialize icons after content is loaded
+      lucide.createIcons();
+    }
+
+    // Initialize content
+    displayContent();
+  </script>
+</body>
+</html>
