@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next-Generation Bankruptcy Intelligence</title>
+    <!-- Tailwind CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <!-- Chart.js for the trends visualization -->
+    <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <style>
         body {
             background-color: #030712;
+            margin: 0;
+            padding: 0;
         }
         .slide {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 2rem;
             scroll-snap-align: start;
         }
         .slide-container {
@@ -23,81 +27,102 @@
             overflow-y: scroll;
             height: 100vh;
         }
+        .slide-content {
+            width: 100%;
+            max-width: 7xl;
+        }
+        .icon-lg {
+            width: 48px;
+            height: 48px;
+            color: #D1FAE5;
+        }
+        .icon-sm {
+            width: 20px;
+            height: 20px;
+            color: #D1FAE5;
+        }
     </style>
 </head>
 <body>
     <div class="slide-container">
-        <div class="min-h-screen">
+        <!-- Overview Slide -->
+        <section id="overview" class="slide bg-gray-950">
             <div class="max-w-7xl mx-auto px-4 py-8 space-y-20">
-                <!-- Overview Slide -->
-                <div id="overview-content" class="slide">
-                    <!-- Content from overview-slide.tsx -->
-                </div>
-
-                <!-- Market Data Landscape -->
-                <div id="data-landscape-content" class="slide">
-                    <!-- Content from bankruptcy-data-landscape -->
-                </div>
-
-                <!-- Market Data Value -->
-                <div id="data-value-content" class="slide">
-                    <!-- Content from bankruptcy-data-value -->
-                </div>
-
-                <!-- Market Opportunity -->
-                <div id="market-content" class="slide">
-                    <!-- Content from market-slide.tsx -->
-                </div>
-
-                <!-- Time Analysis -->
-                <div id="time-analysis-content" class="slide">
-                    <!-- Content from time-analysis-slide.tsx -->
-                </div>
-
-                <!-- Traction -->
-                <div id="traction-content" class="slide">
-                    <!-- Content from traction-slide.tsx -->
-                </div>
-
-                <!-- Phase 2 -->
-                <div id="phase2-content" class="slide">
-                    <!-- Content from phase2-slide.tsx -->
-                </div>
-
-                <!-- Phase 3 -->
-                <div id="phase3-content" class="slide">
-                    <!-- Content from phase3-slide.tsx -->
-                </div>
-
-                <!-- Value and Trends -->
-                <div id="value-trends-content" class="slide">
-                    <!-- Content from value-and-trends.tsx -->
+                <div class="bg-gray-950 p-8 rounded-lg">
+                    <div class="text-center mb-16">
+                        <h1 class="text-5xl font-bold mb-6 text-green-100">
+                            Revolutionizing Restructuring with AI
+                        </h1>
+                        <p class="text-xl text-green-50 max-w-3xl mx-auto mb-12">
+                            Building a next-generation restructuring firm powered by AI technology, unlocking bankruptcy data, and automating manual processes
+                        </p>
+                        
+                        <!-- Insert rest of overview content -->
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Market Data Landscape Slide -->
+        <section id="data-landscape" class="slide bg-gray-950">
+            <div class="max-w-7xl mx-auto px-4 py-8 space-y-20">
+                <div class="bg-gray-950 p-8 rounded-lg">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl font-bold mb-6 text-green-100">
+                            The Hidden Treasury of Bankruptcy Data
+                        </h1>
+                        <p class="text-xl text-green-50 max-w-3xl mx-auto mb-8">
+                            Millions of detailed financial records across industries, providing unprecedented insight into business operations and valuations
+                        </p>
+                        
+                        <!-- Insert rest of landscape content -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue with other slides following the same pattern -->
+        <!-- Each slide gets its own section with proper styling and content -->
+        
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="fixed bottom-4 right-4 flex gap-2">
+        <button onclick="prevSlide()" class="bg-gray-800 text-green-100 px-4 py-2 rounded-lg hover:bg-gray-700">
+            Previous
+        </button>
+        <button onclick="nextSlide()" class="bg-gray-800 text-green-100 px-4 py-2 rounded-lg hover:bg-gray-700">
+            Next
+        </button>
     </div>
 
     <script>
-        // Add smooth scrolling between slides
-        document.querySelectorAll('.slide').forEach(slide => {
-            slide.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                const delta = e.deltaY;
-                const currentSlide = e.currentTarget;
-                if (delta > 0) {
-                    // Scroll down to next slide
-                    const nextSlide = currentSlide.nextElementSibling;
-                    if (nextSlide) {
-                        nextSlide.scrollIntoView({ behavior: 'smooth' });
-                    }
-                } else {
-                    // Scroll up to previous slide
-                    const prevSlide = currentSlide.previousElementSibling;
-                    if (prevSlide) {
-                        prevSlide.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
+        // Navigation functions
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            if (index >= 0 && index < slides.length) {
+                slides[index].scrollIntoView({ behavior: 'smooth' });
+                currentSlide = index;
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
         });
     </script>
 </body>
